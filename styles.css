@@ -1,0 +1,461 @@
+/* --- ESTILOS GENERALES Y PALETA MODERNA (Dark Theme) --- */
+:root {
+    --bg-main: #0f172a;       /* Azul marino muy oscuro */
+    --bg-alt: #1e293b;        /* Azul marino ligeramente más claro */
+    --primary-blue: #3b82f6;  /* Azul brillante */
+    --primary-purple: #8b5cf6;/* Morado moderno */
+    --primary-pink: #ec4899;  /* Rosa vibrante */
+    --text-main: #f8fafc;     /* Blanco suave */
+    --text-muted: #94a3b8;    /* Gris azulado para textos secundarios */
+    --glass-bg: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    background: linear-gradient(to right, var(--primary-pink), var(--primary-purple), var(--primary-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 6rem 0;
+}
+
+.section-alt {
+    background-color: var(--bg-alt);
+}
+
+/* --- EFECTO CRISTAL (Glassmorphism) --- */
+.glass-effect {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* --- HEADER Y NAVEGACIÓN --- */
+header {
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo .pink {
+    color: var(--primary-pink);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--primary-pink);
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: var(--primary-pink);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+/* --- SECCIÓN HERO (Pantalla Completa) --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    /* REEMPLAZA 'tu-foto.jpg' POR LA RUTA DE TU FOTO */
+    background-image: url('img\ portafolio.jpg'); 
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed; /* Efecto Parallax */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom, 
+        rgba(15, 23, 42, 0.4), 
+        rgba(15, 23, 42, 0.95)
+    );
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content h2 {
+    background: none;
+    -webkit-text-fill-color: var(--primary-pink);
+    color: var(--primary-pink);
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(45deg, var(--primary-purple), var(--primary-pink));
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
+}
+
+/* --- SOBRE MÍ --- */
+.about-card {
+    padding: 3rem;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.about-card strong {
+    color: var(--primary-blue);
+}
+
+.about-card p {
+    margin-bottom: 1.5rem;
+}
+
+/* --- HABILIDADES --- */
+.skill-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 2rem;
+}
+
+.skill-item {
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.skill-item:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-blue);
+}
+
+.skill-item i {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.skill-item span {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.pink-icon { color: var(--primary-pink); }
+.purple-icon { color: var(--primary-purple); }
+.blue-icon { color: var(--primary-blue); }
+
+/* --- PROYECTOS --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    overflow: hidden;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-purple);
+}
+
+.project-image {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.project-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.project-card:hover .project-thumb {
+    transform: scale(1.1);
+}
+
+.project-info {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.project-info p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.project-features {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tech-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    font-size: 0.75rem;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.pink-tag { background-color: rgba(236, 72, 153, 0.2); color: var(--primary-pink); border: 1px solid var(--primary-pink); }
+.purple-tag { background-color: rgba(139, 92, 246, 0.2); color: var(--primary-purple); border: 1px solid var(--primary-purple); }
+.blue-tag { background-color: rgba(59, 130, 246, 0.2); color: var(--primary-blue); border: 1px solid var(--primary-blue); }
+
+.project-links {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 1.5rem;
+}
+
+.project-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.project-links a:hover {
+    color: var(--primary-pink);
+}
+
+/* --- CONTACTO --- */
+.contact-section {
+    text-align: center;
+}
+
+.contact-section p {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-btn {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s;
+}
+
+.contact-btn:hover {
+    color: var(--primary-blue);
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #080b14;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.pink {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    background: linear-gradient(to right, var(--primary-pink), var(--primary-purple), var(--primary-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- ANIMACIONES GLOBALES (JS) --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- RESPONSIVE (Móviles y Tablets) --- */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 3rem; }
+    .hero-content h2 { font-size: 1.5rem; }
+    
+    /* Configuración Menú Hamburguesa */
+    .menu-toggle { display: block; }
+    
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: var(--bg-main);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        transition: left 0.3s ease;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        font-size: 1.5rem;
+    }
+}
