@@ -37,7 +37,7 @@ mobileMenuBtn.addEventListener('click', () => {
 const faders = document.querySelectorAll('.fade-in');
 
 const appearOptions = {
-    threshold: 0.15, // El elemento debe estar 15% visible para que se anime
+    threshold: 0.15,
     rootMargin: "0px 0px -50px 0px"
 };
 
@@ -47,7 +47,7 @@ const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll
             return;
         } else {
             entry.target.classList.add('appear');
-            appearOnScroll.unobserve(entry.target); // Deja de observar una vez animado
+            appearOnScroll.unobserve(entry.target);
         }
     });
 }, appearOptions);
@@ -61,28 +61,43 @@ const emailBtn = document.getElementById('email-btn');
 
 if (emailBtn) {
     emailBtn.addEventListener('click', function(e) {
-        e.preventDefault(); // Evita que la página salte hacia arriba al hacer clic
+        e.preventDefault();
         
         const miEmail = "nataliarolonleal@gmail.com";
         
-        // API moderna para copiar al portapapeles
         navigator.clipboard.writeText(miEmail).then(() => {
-            // Guardamos el contenido original del botón
             const originalHTML = emailBtn.innerHTML;
             
-            // Cambiamos el texto e icono para dar confirmación visual
             emailBtn.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
-            emailBtn.style.color = 'var(--primary-pink)'; // Le da tu toque rosa de confirmación
+            emailBtn.style.color = 'var(--primary-pink)';
             
-            // Restauramos el botón después de 2 segundos
             setTimeout(() => {
                 emailBtn.innerHTML = originalHTML;
-                emailBtn.style.color = ''; // Devuelve el color original
+                emailBtn.style.color = '';
             }, 2000);
             
         }).catch(err => {
             console.error('Error al copiar el correo: ', err);
             alert("No se pudo copiar el correo automáticamente.");
+        });
+    });
+}
+
+// 5. Traducción Dinámica Español / Inglés
+const langBtn = document.getElementById('lang-btn');
+let currentLang = 'es';
+
+if (langBtn) {
+    langBtn.addEventListener('click', () => {
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES';
+
+        document.querySelectorAll('[data-es]').forEach(el => {
+            if (currentLang === 'en') {
+                el.innerHTML = el.getAttribute('data-en');
+            } else {
+                el.innerHTML = el.getAttribute('data-es');
+            }
         });
     });
 }
